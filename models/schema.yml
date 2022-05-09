@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+        - name: source1
+          schema: public
+          tables:
+            - name: accounts
+
+models:
+        - name: accounts1
+
+metrics:
+  - name: accounts_count
+    label: Commits Count
+    model: ref('accounts1')
+    description: "A count metric for account1"
+
+    type: count
+
+    timestamp: timestamp
+    time_grains: [day, week, month, year]
+
+    dimensions:
+      - user_id
+      - username
+
+
